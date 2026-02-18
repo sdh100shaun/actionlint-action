@@ -1,0 +1,36 @@
+name: actionlint
+description: Lint GitHub Actions workflow files using actionlint
+author: actionlint-action
+
+branding:
+  icon: check-circle
+  color: blue
+
+inputs:
+  files:
+    description: >
+      Space-separated list of workflow files or directories to lint.
+      Defaults to scanning .github/workflows/ when empty.
+    required: false
+    default: ""
+
+  ignore:
+    description: >
+      Newline-separated list of regular expression patterns.
+      Any error whose message matches a pattern will be suppressed.
+    required: false
+    default: ""
+
+  shellcheck:
+    description: Enable shellcheck integration for shell scripts in run steps.
+    required: false
+    default: "true"
+
+  pyflakes:
+    description: Enable pyflakes integration for Python scripts in run steps.
+    required: false
+    default: "true"
+
+runs:
+  using: docker
+  image: Dockerfile
